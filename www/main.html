@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+    <title>FIIOB Feed</title>
+    <link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+    <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700' rel='stylesheet'
+          type='text/css'>
+    <link href="http://fonts.googleapis.com/css?family=Yanone+Kaffeesatz:400,300,700" rel="stylesheet" type="text/css">
+    <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+    <script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+    <script type="text/javascript" src="JS/iscroll.js"></script>
+
+    <!-- cordova facebook plugin -->
+    <script src="cordova.js"></script>
+    <script src="cdv-plugin-fb-connect.js"></script>
+    <!-- facebook js sdk -->
+    <script src="facebook-js-sdk.js"></script>
+
+    <script>
+//        Initialize the Facebook SDK
+alert('wini');
+            FB.Event.subscribe('auth.login', function(response) {
+
+            });
+            document.addEventListener('deviceready', function() {
+                try {
+                    FB.init({
+                        appId: "1391905344393231",
+                        nativeInterface: CDV.FB,
+                        useCachedDialogs: false
+                    });
+                } catch (e) {
+
+                }
+            }, false);
+
+//        document.addEventListener('deviceready', function() {
+//            alert('wini');
+//            FB.init({
+//                appId: '1391905344393231',
+//                nativeInterface: CDV.FB,
+//                useCachedDialogs: false
+//            });
+//
+//            FB.getLoginStatus(handleStatusChange);
+//
+//            authUser();
+//            updateAuthElements();
+//        });
+    </script>
+
+
+    <script type="text/javascript" src="app.js"></script>
+    <link type="text/css" rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="beforeLogin" style="position: absolute; top:0px;left:0px;width:100%;height:100%; z-index: 999;">
+    <img src="wall4.png" class="stretch" alt="" />
+    <div style="background: rgba(0, 0, 0, 0.3);position: absolute; width:100%;  top:0px; left:0px; height:100%;"> </div>
+        <img src="logo.png" style="position: absolute;
+width: 30%;
+left: 37%;
+top: 42%;
+height: 61px;" alt="">
+        <span style="text-shadow: 1px 1px 6px #FFF;
+position: absolute;
+width: 80%;
+left: 10%;
+top: 76px;
+height: 50px;
+line-height: 50px;
+font-size: 50px;
+font-weight: bold;
+text-align: center;
+color: #D62929;
+font-family: 'Yanone Kaffeesatz', sans-serif;">FOOTBALL IS IN<BR>OUR BLOOD</span>
+
+    <button  class="btn btn-info" onclick="login()">LOGIN TO FIIOB</button>
+</div>
+
+<div id="afterLogin" style="display: block;">
+    <div onclick="login()" id="header"><span class="newPost" onclick = "document.getElementById('newPost').style.display='block';document.getElementById('fade').style.display='block'" style="font-size:24px;float: right;margin-right: 10px;position: absolute;right: 0;color: #DDD;"><i class="fa fa-pencil-square-o"></i></span>FIIOB Feed</div>
+    <div id="wrapper">
+        <div id="scroller">
+            <div id="pullDown">
+                <span class="pullDownIcon"></span><span class="pullDownLabel">Pull down to refresh...</span>
+            </div>
+
+            <ul id="thelist">
+            </ul>
+            <div id="pullUp">
+                <span class="pullUpIcon"></span><span class="pullUpLabel">Pull up to refresh...</span>
+            </div>
+        </div>
+    </div>
+
+
+
+    <div id="newPost" class="postWindow">
+        <div class="header">
+            <span class="newPost" style="font-size:24px;float: right;margin-right: 10px;position: absolute;right: 0;color: #DDD;"><i class="fa fa-check"></i></span>
+            <span class="newPost" onclick = "console.log('aaa');document.getElementById('newPost').style.display='none';document.getElementById('fade').style.display='none'" style="font-size:24px;float: left;margin-left: 10px;position: absolute;left: 0;color: #DDD;"><i class="fa fa-times"></i></span>
+            New Post</div><br>
+        <textarea placeholder="Share Something..." class="postTextBox"></textarea>
+    </div>
+
+    <div id="commentBox" class="commentWindow">
+        <div class="header">
+            <span class="newPost" onclick = "console.log('aaa');document.getElementById('commentBox').style.display='none';document.getElementById('fade').style.display='none'" style="font-size:24px;float: left;margin-left: 10px;position: absolute;left: 0;color: #DDD;"><i class="fa fa-times"></i></span>
+            Comments</div><br>
+
+        <div id="wrapperCom">
+            <div id="scrollerCom">
+                <div id="pullDownCom">
+                    <span class="pullDownIcon"></span><span class="pullDownLabel">Pull down to refresh...</span>
+                </div>
+
+                <ul id="thelistCom">
+
+                </ul>
+            </div>
+        </div>
+        <div id="footer">
+            <textarea id="postNewComment" placeholder="Add a Comment..." class="commentTextBox"></textarea>
+            <span onclick="postComment()" class="postIcon"><i class="fa fa-check"></i></span>
+        </div>
+    </div>
+
+    <div id="fade" class="black_overlay"></div>
+</div>
+</body>
+</html>
